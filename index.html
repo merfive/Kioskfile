@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Kiosk Profit Manager</title>
+  <style>
+    body { font-family: Arial; padding: 20px; }
+    input, button { padding: 8px; margin: 5px; }
+    table { border-collapse: collapse; margin-top: 20px; width: 100%; }
+    th, td { border: 1px solid #ccc; padding: 8px; text-align: center; }
+    .profit { color: green; font-weight: bold; }
+    .loss { color: red; font-weight: bold; }
+  </style>
+</head>
+<body>
+
+<h2>🛒 Kiosk Shop Profit Manager</h2>
+
+<input id="name" placeholder="Product name">
+<input id="buy" type="number" placeholder="Buy price">
+<input id="sell" type="number" placeholder="Sell price">
+<input id="qty" type="number" placeholder="Quantity sold">
+<button onclick="addProduct()">Add</button>
+
+<table>
+  <thead>
+    <tr>
+      <th>Product</th>
+      <th>Buy</th>
+      <th>Sell</th>
+      <th>Qty</th>
+      <th>Total Profit</th>
+      <th>Status</th>
+    </tr>
+  </thead>
+  <tbody id="table"></tbody>
+</table>
+
+<script>
+function addProduct() {
+  let name = document.getElementById("name").value;
+  let buy = Number(document.getElementById("buy").value);
+  let sell = Number(document.getElementById("sell").value);
+  let qty = Number(document.getElementById("qty").value);
+
+  let profit = (sell - buy) * qty;
+  let status = profit >= 0 ? "Profitable" : "Loss";
+  let cls = profit >= 0 ? "profit" : "loss";
+
+  let row = `
+    <tr>
+      <td>${name}</td>
+      <td>${buy}</td>
+      <td>${sell}</td>
+      <td>${qty}</td>
+      <td>${profit}</td>
+      <td class="${cls}">${status}</td>
+    </tr>
+  `;
+
+  document.getElementById("table").innerHTML += row;
+}
+</script>
+
+</body>
+                                    </html>

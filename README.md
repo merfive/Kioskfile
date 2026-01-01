@@ -1,2 +1,0 @@
-# Kioskfile
-Manager of kiosks 
